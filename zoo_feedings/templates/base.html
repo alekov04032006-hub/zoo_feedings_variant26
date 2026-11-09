@@ -1,0 +1,11 @@
+{% load static %}
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Кормления в зоопарке{% endblock %} · Зоопарк</title>
+<link rel="icon" href="{% static 'img/logo.png' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/main.js' %}" defer></script></head><body>
+<header><a class="brand" href="{% url 'homepage:home' %}"><img src="{% static 'img/logo.png' %}" alt="Логотип: лапа" width="48" height="48"><span>ЗООПАРК<small>Кормления и встречи</small></span></a>
+<nav aria-label="Основная навигация"><a href="{% url 'homepage:home' %}">Главная</a><a href="{% url 'aviaries:list' %}">Вольеры</a><a href="{% url 'feedings:list' %}">Кормления</a><a href="{% url 'feedings:statistics' %}">Статистика</a></nav></header>
+<main>{% block content %}{% endblock %}</main>
+<footer>Кормления в зоопарке · Вариант 26<br>Ковалишин Александр Александрович</footer></body></html>

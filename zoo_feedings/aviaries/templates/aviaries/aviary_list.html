@@ -1,0 +1,3 @@
+{% extends 'base.html' %}{% block title %}Вольеры{% endblock %}
+{% block content %}<p class="eyebrow">ПРОСТРАНСТВА ЗООПАРКА</p><h1>Наши вольеры</h1><p class="lead">Познакомьтесь с местами проведения кормлений.</p><div class="grid">
+{% for aviary in aviaries %}<article class="card"><span class="label">{{ aviary.aviary_kind|upper }}</span><h2>{{ aviary.name }}</h2><p>Вместимость смотровой зоны: <strong>{{ aviary.capacity }} чел.</strong></p></article>{% empty %}<p class="empty">Вольеры пока не добавлены.</p>{% endfor %}</div>{% endblock %}

@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Статистика кормлений{% endblock %}
+{% block content %}<p class="eyebrow">РАСПИСАНИЕ В ЦИФРАХ</p><h1>Статистика кормлений</h1>
+<p class="lead">Количество кормлений каждого типа. Показаны только группы, достигшие выбранного минимума.</p>
+<form method="get" class="filters"><label>Минимум кормлений в группе<input type="number" name="min_count" min="1" max="1000000" value="{{ min_count }}"></label><button type="submit">Показать</button></form>
+{% if error %}<p class="empty" role="alert">{{ error }}</p>{% else %}<p>Всего кормлений в базе: <strong>{{ total }}</strong></p><section class="card"><table><thead><tr><th>Вид кормления</th><th>Количество</th></tr></thead><tbody>{% for group in groups %}<tr><td>{{ group.feed_kind|capfirst }}</td><td>{{ group.total }}</td></tr>{% empty %}<tr><td colspan="2">Нет типов кормлений с таким количеством записей.</td></tr>{% endfor %}</tbody></table></section>{% endif %}{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Главная — кормления в зоопарке{% endblock %}
+{% block content %}<section class="hero"><p class="eyebrow">БЛИЖЕ К ПРИРОДЕ</p>
+<h1>Кормления<br>в зоопарке</h1><p class="lead">Узнайте, где и когда проходят кормления животных. Выбирайте интересные встречи, смотрите расписание и знакомьтесь с нашими вольерами.</p>
+<div class="actions"><a class="button" href="{% url 'feedings:list' %}">Смотреть кормления →</a><a class="button secondary" href="{% url 'aviaries:list' %}">Наши вольеры</a></div>
+<div class="counter"><strong>{{ total }}</strong><span>Всего кормлений: {{ total }}.<br>Актуальные данные расписания</span></div></section>
+<section class="intro"><p class="eyebrow">ПЛАНИРУЙТЕ ВИЗИТ</p><h2>Одна встреча — много открытий</h2><p>В карточках указаны время, продолжительность, статус и количество посетителей. На странице статистики можно сравнить виды кормлений.</p></section>{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block title %}Расписание кормлений{% endblock %}
+{% block content %}<p class="eyebrow">РАСПИСАНИЕ ВСТРЕЧ</p><h1>Кормления</h1><p class="lead">Найдите встречу по количеству посетителей и выберите удобный порядок.</p>
+<form method="get" class="filters" action="{% url 'feedings:list' %}">
+<label>Минимум посетителей<input type="number" name="visitors" min="0" max="1000000" value="{{ visitors }}" placeholder="Например, 25"></label>
+<label>Сортировка<select name="sort">{% for key, label in sorts %}<option value="{{ key }}" {% if key == sort %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+<label>Количество записей<input type="number" name="limit" min="1" max="1000" value="{{ limit }}" placeholder="Все"></label>
+<button type="submit">Применить</button><a href="{% url 'feedings:list' %}">Сбросить</a></form>
+{% if error %}<p class="empty" role="alert">{{ error }}</p>{% else %}<p class="muted">Показано кормлений: {{ feedings|length }}</p>
+<div class="grid">{% for feeding in feedings %}{% include 'feedings/includes/feeding_card.html' with feeding=feeding only %}{% empty %}<p class="empty">Кормления не найдены. Попробуйте уменьшить минимальное количество посетителей.</p>{% endfor %}</div>{% endif %}{% endblock %}

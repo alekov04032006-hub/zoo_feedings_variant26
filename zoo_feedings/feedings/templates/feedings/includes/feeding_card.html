@@ -1,0 +1,7 @@
+<article class="card feeding-card"><div class="card-top"><span class="label">{{ feeding.feed_kind|upper }}</span>{% include 'feedings/includes/status.html' %}</div>
+<h2><a href="{% url 'feedings:detail' feeding.slug %}" title="{{ feeding.title }}">{{ feeding.title|truncatechars:38 }}</a></h2>
+<p class="muted">{{ feeding.aviary_name|default:'Вольер не указан' }}</p>
+<dl><div><dt>Дата</dt><dd>{{ feeding.feed_date|date:'d.m.Y' }}</dd></div><div><dt>Время</dt><dd>{{ feeding.feed_date|date:'H:i' }}</dd></div><div><dt>Продолжительность</dt><dd>{{ feeding.duration }} мин.</dd></div><div><dt>Посетители</dt><dd>{{ feeding.visitors }} чел.</dd></div><div><dt>Статус</dt><dd>{{ feeding.status }}</dd></div></dl>
+<a class="text-link" href="{% url 'feedings:detail' feeding.slug %}">Открыть кормление →</a>
+<button class="disclosure" type="button" data-toggle="aviary-{{ feeding.id }}" aria-controls="aviary-{{ feeding.id }}" aria-expanded="false">О вольере</button>
+<p id="aviary-{{ feeding.id }}" hidden>{{ feeding.aviary_kind|capfirst }} · Вместимость: {{ feeding.capacity }} чел.</p></article>

@@ -1,0 +1,1 @@
+{% if feeding.status == 'запланировано' %}<span class="badge planned">Скоро начало</span>{% elif feeding.status == 'идёт' %}<span class="badge live">Идёт кормление</span>{% elif feeding.status == 'завершено' %}<span class="badge done">Кормление прошло</span>{% endif %}
